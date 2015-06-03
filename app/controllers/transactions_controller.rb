@@ -2,6 +2,7 @@ class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
 
   def home
+    @total = Transaction.total
   end
 
   # GET /transactions
@@ -72,6 +73,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:description, :recipient, :type, :amount)
+      params.require(:transaction).permit(:description, :recipient, :transaction_type, :amount)
     end
 end

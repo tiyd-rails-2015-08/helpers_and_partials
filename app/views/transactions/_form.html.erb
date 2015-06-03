@@ -20,8 +20,8 @@
     <%= f.text_field :recipient %>
   </div>
   <div class="field">
-    <%= f.label :type %><br>
-    <%= f.select :type, options_for_select(["Deposit", "Withdrawal"]) %>
+    <%= f.label :transaction_type %><br>
+    <%= f.select :transaction_type, options_for_select(["Deposit", "Withdrawal"]) %>
   </div>
   <div class="field">
     <%= f.label :amount %><br>
