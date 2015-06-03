@@ -3,6 +3,7 @@ class TransactionsController < ApplicationController
 
   def home
     @total = Transaction.total
+    @count = Transaction.count
   end
 
   # GET /transactions

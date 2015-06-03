@@ -5,4 +5,5 @@ class TransactionTest < ActiveSupport::TestCase
     #fixtures: two $100 deposits & one $150 withdrawal
     assert_equal 50, Transaction.total
   end
+  
 end
