@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :transaction_type %><br>
-    <%= f.select :transaction_type, options_for_select(["Deposit", "Withdrawal"]) %>
+    <%= f.select :transaction_type, options_for_select(["Deposit", "Withdrawal"], "Deposit") %>
   </div>
   <div class="field">
     <%= f.label :amount %><br>

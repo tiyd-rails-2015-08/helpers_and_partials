@@ -9,5 +9,5 @@ one:
 two:
   description: MyString
   recipient: MyString
-  transaction_type: 
+  transaction_type:
   amount: 9.99
