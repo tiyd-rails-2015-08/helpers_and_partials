@@ -34,4 +34,15 @@ class Transaction < ActiveRecord::Base
     last_month = all.select {|t| t.created_at.month == DateTime.now.month - 1}
     last_month.count
   end
+
+  def self.biggest_this_month
+    this_month = withdrawals.select {|t| t.created_at.month == DateTime.now.month}
+    sorted = this_month.sort_by {|t| t.amount}
+    sorted.last
+  end
+
+  def self.biggest_ever
+    sorted = withdrawals.sort_by {|t| t.amount}
+    sorted.last
+  end
 end

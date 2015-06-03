@@ -46,4 +46,20 @@ class TransactionTest < ActiveSupport::TestCase
     one.update(created_at: one.created_at - 2.months)
     assert_equal 2, Transaction.transactions_last_month
   end
+
+  test "biggest expense this month" do
+    six = transactions(:six)
+    five = transactions(:five)
+    six.update(created_at: six.created_at - 1.month)
+    five.update(created_at: five.created_at - 1.month)
+    assert_equal transactions(:two), Transaction.biggest_this_month
+  end
+
+  test "biggest expense ever" do
+    six = transactions(:six)
+    five = transactions(:five)
+    six.update(created_at: six.created_at - 2.month)
+    five.update(created_at: five.created_at - 1.month)
+    assert_equal transactions(:six), Transaction.biggest_ever
+  end
 end
