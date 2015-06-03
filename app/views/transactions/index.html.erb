@@ -25,6 +25,20 @@
         <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
+    <tr>
+      <td colspan="3">Total funds available:</td>
+      <td><%=number_to_currency(@transactions.total)%></td>
+  </tbody>
+</table>
+
+<br>
+
+<table>
+  <tbody>
+      <tr>
+        <td>Total number of transactions:</td>
+        <td><%= @count %></td>
+      </tr>
   </tbody>
 </table>
 

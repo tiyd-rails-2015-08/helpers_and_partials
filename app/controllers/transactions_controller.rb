@@ -10,6 +10,8 @@ class TransactionsController < ApplicationController
   # GET /transactions.json
   def index
     @transactions = Transaction.all
+    @total = Transaction.total
+    @count = Transaction.count
   end
 
   # GET /transactions/1

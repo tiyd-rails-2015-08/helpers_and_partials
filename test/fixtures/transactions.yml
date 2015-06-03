@@ -1,19 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  description: MyString
-  recipient: MyString
+  description: Paycheck
+  recipient: Me
   transaction_type: Deposit
   amount: 100
 
 two:
-  description: MyString
-  recipient: MyString
+  description: Clothes
+  recipient: The Mall
   transaction_type: Withdrawal
   amount: 150
 
 three:
     description: MyString
-    recipient: MyString
+    recipient: Me
     transaction_type: Deposit
-    amount: 100
+    amount: 500
+
+four:
+  description: Food
+  recipient: Restaurant
+  transaction_type: Withdrawal
+  amount: 100
+
+five:
+  description: Movies
+  recipient: The Movies
+  transaction_type: Withdrawal
+  amount: 50
+
+six:
+    description: Other Stuff
+    recipient: The Mall
+    transaction_type: Withdrawal
+    amount: 250
