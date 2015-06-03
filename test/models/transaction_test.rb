@@ -27,4 +27,23 @@ class TransactionTest < ActiveSupport::TestCase
     assert_equal 300, Transaction.spent_last_month
   end
 
+  test "transactions this month" do
+    six = transactions(:six)
+    five = transactions(:five)
+    one = transactions(:one)
+    six.update(created_at: six.created_at - 1.month)
+    five.update(created_at: five.created_at - 1.month)
+    one.update(created_at: one.created_at - 2.months)
+    assert_equal 3, Transaction.transactions_this_month
+  end
+
+  test "transactions last month" do
+    six = transactions(:six)
+    five = transactions(:five)
+    one = transactions(:one)
+    six.update(created_at: six.created_at - 1.month)
+    five.update(created_at: five.created_at - 1.month)
+    one.update(created_at: one.created_at - 2.months)
+    assert_equal 2, Transaction.transactions_last_month
+  end
 end

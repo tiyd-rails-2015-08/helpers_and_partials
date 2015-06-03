@@ -24,4 +24,14 @@ class Transaction < ActiveRecord::Base
     last_month = withdrawals.select {|t| t.created_at.month == DateTime.now.month - 1}
     last_month.reduce(0) {|sum, t| sum + t.amount}
   end
+
+  def self.transactions_this_month
+    this_month = all.select {|t| t.created_at.month == DateTime.now.month}
+    this_month.count
+  end
+
+  def self.transactions_last_month
+    last_month = all.select {|t| t.created_at.month == DateTime.now.month - 1}
+    last_month.count
+  end
 end
