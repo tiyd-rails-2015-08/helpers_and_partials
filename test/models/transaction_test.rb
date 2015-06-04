@@ -62,4 +62,8 @@ class TransactionTest < ActiveSupport::TestCase
     five.update(created_at: five.created_at - 1.month)
     assert_equal transactions(:six), Transaction.biggest_ever
   end
+
+  test "where'd my money go" do
+    assert_equal "The Mall", Transaction.money_pit
+  end
 end

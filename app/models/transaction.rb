@@ -45,4 +45,19 @@ class Transaction < ActiveRecord::Base
     sorted = withdrawals.sort_by {|t| t.amount}
     sorted.last
   end
+
+  def self.money_pit
+    costs = (withdrawals.map {|t| t.recipient}).to_set
+    most = 0
+    biggest = nil
+    costs.each do |c|
+      list = Transaction.where(recipient: c)
+      total = list.reduce(0) {|sum, t| t.amount + sum}
+      if total > most
+        biggest = c
+        most = total
+      end
+    end
+    biggest
+  end
 end
