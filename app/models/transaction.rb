@@ -38,12 +38,14 @@ class Transaction < ActiveRecord::Base
   def self.biggest_this_month
     this_month = withdrawals.select {|t| t.created_at.month == DateTime.now.month}
     sorted = this_month.sort_by {|t| t.amount}
-    sorted.last
+    biggest = sorted.last
+    "#{biggest.recipient}: $#{biggest.amount}"
   end
 
   def self.biggest_ever
     sorted = withdrawals.sort_by {|t| t.amount}
-    sorted.last
+    biggest = sorted.last
+    "#{biggest.recipient}: $#{biggest.amount}"
   end
 
   def self.money_pit

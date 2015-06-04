@@ -52,7 +52,7 @@ class TransactionTest < ActiveSupport::TestCase
     five = transactions(:five)
     six.update(created_at: six.created_at - 1.month)
     five.update(created_at: five.created_at - 1.month)
-    assert_equal transactions(:two), Transaction.biggest_this_month
+    assert_equal "The Mall: $150.0", Transaction.biggest_this_month
   end
 
   test "biggest expense ever" do
@@ -60,7 +60,7 @@ class TransactionTest < ActiveSupport::TestCase
     five = transactions(:five)
     six.update(created_at: six.created_at - 2.month)
     five.update(created_at: five.created_at - 1.month)
-    assert_equal transactions(:six), Transaction.biggest_ever
+    assert_equal "The Mall: $250.0", Transaction.biggest_ever
   end
 
   test "where'd my money go" do
