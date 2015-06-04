@@ -43,13 +43,23 @@ class Transaction < ActiveRecord::Base
     this_month = withdrawals.select {|t| t.created_at.month == DateTime.now.month}
     sorted = this_month.sort_by {|t| t.amount}
     biggest = sorted.last
-    "#{biggest.recipient}: $#{biggest.amount}"
+    if biggest.amount.to_s[-2..-1] == ".0"
+      dollar_value = "#{biggest.amount}" + "0"
+      "#{biggest.recipient}: $#{dollar_value}"
+    else
+      "#{biggest.recipient}: $#{biggest.amount}"
+    end
   end
 
   def self.biggest_ever
     sorted = withdrawals.sort_by {|t| t.amount}
     biggest = sorted.last
-    "#{biggest.recipient}: $#{biggest.amount}"
+    if biggest.amount.to_s[-2..-1] == ".0"
+      dollar_value = "#{biggest.amount}" + "0"
+      "#{biggest.recipient}: $#{dollar_value}"
+    else
+      "#{biggest.recipient}: $#{biggest.amount}"
+    end
   end
 
   def self.money_pit
