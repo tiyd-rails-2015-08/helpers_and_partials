@@ -2,20 +2,20 @@ body {
   background-color: #fff;
   color: #333;
   font-family: georgia;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
-  font-size: 13px;
-  line-height: 18px;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 pre {
   background-color: #eee;
   padding: 10px;
-  font-size: 11px;
+  font-size: 14px;
 }
 
 a {
@@ -24,6 +24,7 @@ a {
 
 div {
   &.field, &.actions {
+    font-size: 20px;
     margin-bottom: 10px;
   }
 }
