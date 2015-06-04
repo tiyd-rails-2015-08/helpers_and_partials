@@ -28,6 +28,7 @@
     <tr>
       <td colspan="3">Total funds available:</td>
       <td><%=number_to_currency(@transactions.total)%></td>
+    </tr>
   </tbody>
 </table>
 
@@ -36,8 +37,36 @@
 <table>
   <tbody>
       <tr>
-        <td>Total number of transactions:</td>
+        <td>Total number of transactions: </td>
         <td><%= @count %></td>
+      </tr>
+      <tr>
+        <td>Amount spent this month: </td>
+        <td><%= number_to_currency(@transactions.spent_this_month) %></td>
+      </tr>
+      <tr>
+        <td>Amount spent last month: </td>
+        <td><%= number_to_currency(@transactions.spent_last_month) %></td>
+      </tr>
+      <tr>
+        <td>Total transactions this month: </td>
+        <td><%= @transactions.transactions_this_month %></td>
+      </tr>
+      <tr>
+        <td>Total transactions last month: </td>
+        <td><%= @transactions.transactions_last_month %></td>
+      </tr>
+      <tr>
+        <td>Biggest expense this month: </td>
+        <td><%= @transactions.biggest_this_month %></td>
+      </tr>
+      <tr>
+        <td>Biggest expense ever: </td>
+        <td><%= @transactions.biggest_ever %></td>
+      </tr>
+      <tr>
+        <td>Where most of your money goes: </td>
+        <td><%= @transactions.money_pit %></td>
       </tr>
   </tbody>
 </table>
