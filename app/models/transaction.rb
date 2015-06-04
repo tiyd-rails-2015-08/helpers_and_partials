@@ -63,17 +63,19 @@ class Transaction < ActiveRecord::Base
   end
 
   def self.money_pit
-    costs = (withdrawals.map {|t| t.recipient}).to_set
-    most = 0
-    biggest = nil
-    costs.each do |c|
-      list = Transaction.where(recipient: c)
-      total = list.reduce(0) {|sum, t| t.amount + sum}
-      if total > most
-        biggest = c
-        most = total
-      end
-    end
-    biggest
+    Transaction.where(transaction_type: "Withdrawal").group(:recipient).order("sum(amount)").last.recipient
+    # #Original solution, before .group blew my mind
+    # costs = (withdrawals.map {|t| t.recipient}).to_set
+    # most = 0
+    # biggest = nil
+    # costs.each do |c|
+    #   list = Transaction.where(recipient: c)
+    #   total = list.reduce(0) {|sum, t| t.amount + sum}
+    #   if total > most
+    #     biggest = c
+    #     most = total
+    #   end
+    # end
+    # biggest
   end
 end
