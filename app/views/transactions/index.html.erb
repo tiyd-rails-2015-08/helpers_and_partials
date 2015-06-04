@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Transactions</h1>
+<h1>Transaction Index</h1>
 
-<table>
+<table id=list>
   <thead>
     <tr>
       <th>Description</th>
@@ -32,9 +32,9 @@
   </tbody>
 </table>
 
-<br>
 
-<table>
+
+<table id =stats>
   <tbody>
       <tr>
         <td>Total number of transactions: </td>
@@ -73,5 +73,9 @@
 
 <br>
 
-<%= link_to 'New Transaction', new_transaction_path %> |
-<%= link_to 'Home', root_path %>
+<div class=footer>
+  <p>
+    <%= link_to 'New Transaction', new_transaction_path %> |
+    <%= link_to 'Home', root_path %>
+  </p>
+</div

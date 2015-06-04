@@ -13,3 +13,59 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  font-family: Georgia;
+  background-color: lightblue
+}
+
+table {
+  margin: 1%;
+}
+
+td {
+  border: 2px solid grey;
+}
+
+#list {
+  float: left;
+  position: absolute
+}
+
+#stats {
+  float: right;
+  position: relative
+}
+
+h1 {
+  text-align: center;
+  color: grey;
+}
+
+h2 {
+  text-align: center;
+  color: grey;
+}
+
+h3 {
+  color: darkred;
+  font-style: italic;
+  text-align: center;
+}
+
+#home {
+  margin-top: 20%
+  }
+
+#form {
+  margin-left: 46%
+}
+
+.footer {
+  clear: both;
+  margin: auto;
+}
+
+p {
+  text-align: center
+}

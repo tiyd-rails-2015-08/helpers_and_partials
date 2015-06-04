@@ -1,9 +1,14 @@
-<h1>YO WALLET</h1>
+<div id=home>
+  <h1>YO WALLET</h1>
 
-<h3>Total Number of Transactions: <%= @count %></h3>
-<h3>Dough Currently Available: <%= number_to_currency(@total) %> </h3>
-<% if @total < 0 %>
-  <h5>Ever heard of a budget?</h5>
-<% end %>
-<%= link_to "View Transactions", transactions_path%> |
-<%= link_to "New Transaction", new_transaction_path%>
+  <h2>Total Number of Transactions: <%= @count %></h2>
+  <h2>Dough Currently Available: <%= number_to_currency(@total) %> </h2>
+  <% if @total < 0 %>
+    <h3>Ever heard of a budget?</h3>
+  <% end %>
+  <div class=footer>
+    <p>
+      <%= link_to "View Transactions", transactions_path%> |
+      <%= link_to "New Transaction", new_transaction_path%>
+    </p>
+</div>
