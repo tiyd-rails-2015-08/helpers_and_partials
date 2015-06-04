@@ -29,12 +29,10 @@ td {
 
 #list {
   float: left;
-  position: absolute
 }
 
 #stats {
   float: right;
-  position: relative
 }
 
 h1 {
@@ -58,7 +56,7 @@ h3 {
   }
 
 #form {
-  margin-left: 46%
+  margin-left: 45.5%
 }
 
 .footer {

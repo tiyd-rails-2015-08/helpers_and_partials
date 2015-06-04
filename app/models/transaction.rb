@@ -1,5 +1,9 @@
 class Transaction < ActiveRecord::Base
 
+  validates :amount, presence: true
+  validates :recipient, presence: true
+  validates :transaction_type, presence: true
+
   def self.withdrawals
     all.select {|t| t.transaction_type == "Withdrawal"}
   end
