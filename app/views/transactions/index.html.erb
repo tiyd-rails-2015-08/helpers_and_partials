@@ -5,7 +5,11 @@
 <table id=list>
   <thead>
     <tr>
-      <th>Description</th>
+      <th>
+        <span class="special">
+          Description
+        </span>
+      </th>
       <th>Recipient</th>
       <th>Type</th>
       <th>Amount</th>
@@ -16,25 +20,43 @@
   <tbody>
     <% @transactions.each do |transaction| %>
       <tr>
-        <td><%= transaction.description %></td>
+        <td>
+          <span class="special">
+            <%= transaction.description %>
+          <span>
+        </td>
         <td><%= transaction.recipient %></td>
-        <td><%= transaction.transaction_type %></td>
-        <td><%= number_to_currency(transaction.amount) %></td>
+        <td>
+          <span class="<%= transaction.transaction_type == 'Withdrawal' ? 'negative' : 'positive' %>">
+            <%= transaction.transaction_type %>
+          </span>
+        </td>
+        <td>
+          <span class="<%= transaction.transaction_type == 'Withdrawal' ? 'negative' : 'positive' %>">
+            <%= transaction.amount %>
+          </span>
+        </td>
         <td><%= link_to 'Show', transaction %></td>
         <td><%= link_to 'Edit', edit_transaction_path(transaction) %></td>
-        <td><%= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+          <%= link_to 'Destroy',
+              transaction, method: :delete,
+              data: { confirm: 'Are you sure?' } %>
+        </td>
       </tr>
     <% end %>
     <tr>
       <td colspan="3">Total funds available:</td>
-      <td><%=number_to_currency(@transactions.total)%></td>
+      <td class="<%= @transactions.total < 0 ? 'negative' : 'positive' %>">
+        <%= @transactions.total %>
+      </td>
     </tr>
   </tbody>
 </table>
 
 
 
-<table id =stats>
+<table id="stats">
   <tbody>
       <tr>
         <td>Total number of transactions: </td>
@@ -42,11 +64,11 @@
       </tr>
       <tr>
         <td>Amount spent this month: </td>
-        <td><%= number_to_currency(@transactions.spent_this_month) %></td>
+        <td><%= @transactions.spent_this_month %></td>
       </tr>
       <tr>
         <td>Amount spent last month: </td>
-        <td><%= number_to_currency(@transactions.spent_last_month) %></td>
+        <td><%= @transactions.spent_last_month %></td>
       </tr>
       <tr>
         <td>Total transactions this month: </td>

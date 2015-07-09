@@ -67,3 +67,11 @@ h3 {
 p {
   text-align: center
 }
+
+.positive {
+  color: green;
+}
+
+.negative {
+  color: red;
+}

@@ -43,27 +43,36 @@ class Transaction < ActiveRecord::Base
     this_month = withdrawals.select {|t| t.created_at.month == DateTime.now.month}
     sorted = this_month.sort_by {|t| t.amount}
     biggest = sorted.last
-    if biggest.amount.to_s[-2..-1] == ".0"
-      dollar_value = "#{biggest.amount}" + "0"
-      "#{biggest.recipient}: $#{dollar_value}"
+    if biggest
+      if biggest.amount.to_s[-2..-1] == ".0"
+        dollar_value = "#{biggest.amount}" + "0"
+        "#{biggest.recipient}: $#{dollar_value}"
+      else
+        "#{biggest.recipient}: $#{biggest.amount}"
+      end
     else
-      "#{biggest.recipient}: $#{biggest.amount}"
+      ""
     end
   end
 
   def self.biggest_ever
     sorted = withdrawals.sort_by {|t| t.amount}
     biggest = sorted.last
-    if biggest.amount.to_s[-2..-1] == ".0"
-      dollar_value = "#{biggest.amount}" + "0"
-      "#{biggest.recipient}: $#{dollar_value}"
+    if biggest
+      if biggest.amount.to_s[-2..-1] == ".0"
+        dollar_value = "#{biggest.amount}" + "0"
+        "#{biggest.recipient}: $#{dollar_value}"
+      else
+        "#{biggest.recipient}: $#{biggest.amount}"
+      end
     else
-      "#{biggest.recipient}: $#{biggest.amount}"
+      ""
     end
   end
 
   def self.money_pit
-    Transaction.where(transaction_type: "Withdrawal").group(:recipient).order("sum(amount)").last.recipient
+    t = Transaction.where(transaction_type: "Withdrawal").group(:recipient).order("sum(amount)").last
+    last ? last.recipient : ""
     # #Original solution, before .group blew my mind
     # costs = (withdrawals.map {|t| t.recipient}).to_set
     # most = 0
